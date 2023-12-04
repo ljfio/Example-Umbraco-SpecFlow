@@ -1,0 +1,43 @@
+@using Umbraco.Cms.Web.Website.Controllers
+
+@model Umbraco.Cms.Web.Website.Models.RegisterModel
+
+@using (Html.BeginUmbracoForm<UmbRegisterController>("HandleRegisterMember"))
+{
+    @Html.ValidationSummary()
+    
+    <div>
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    
+    @if (!Model.UsernameIsEmail)
+    {
+        <div>
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username)
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+    }
+    
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    
+    <div>
+        @Html.LabelFor(m => m.ConfirmPassword)
+        @Html.PasswordFor(m => m.ConfirmPassword)
+        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+    </div>
+    
+    <button type="submit">Register</button>
+}

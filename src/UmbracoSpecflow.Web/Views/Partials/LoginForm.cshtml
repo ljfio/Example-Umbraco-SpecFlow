@@ -1,0 +1,22 @@
+@using Umbraco.Cms.Web.Website.Controllers
+
+@model Umbraco.Cms.Web.Common.Models.LoginModel
+
+@using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
+{
+    @Html.ValidationSummary()
+    
+    <div>
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username)
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    
+    <button type="submit">Login</button>
+}
